@@ -1,17 +1,16 @@
-﻿@model Category
-
+﻿@model CreateSliderDto
 @{
-    ViewData["Title"] = "CreateCategory";
+    ViewData["Title"] = "CreateSlider";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
 <div class="container">
     <div class="page-inner">
         <div class="page-header">
-            <h3 class="fw-bold mb-3">Categories</h3>
+            <h3 class="fw-bold mb-3">Sliders</h3>
             <ul class="breadcrumbs mb-3">
                 <li class="nav-home">
-                    <a href="https://localhost:7039/Home">
+                    <a href="#">
                         <i class="icon-home"></i>
                     </a>
                 </li>
@@ -19,13 +18,13 @@
                     <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Add Category</a>
+                    <a href="/Sliders/SliderList">Add Slider</a>
                 </li>
                 <li class="separator">
                     <i class="icon-arrow-right"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">New Create Category</a>
+                    <a href="/Sliders/CreateSlider">New Create Slider</a>
                 </li>
             </ul>
         </div>
@@ -33,15 +32,18 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Add Category Panel</div>
+                        <div class="card-title">Add Slider Panel</div>
                     </div>
                     <div class="card-body">
 
                         <form method="post">
-                            <label>Category Name</label>
-                            <input type="text" asp-for="CategoryName" class="form-control" />
+                            <label>Slider Title Text</label>
+                            <input type="text" asp-for="Title" class="form-control" />
                             <br />
-                            <button class="btn btn-primary">Create Category</button>
+                            <label>Slider Image Url</label>
+                            <input type="text" asp-for="ImageUrl" class="form-control" />
+                            <br />
+                            <button class="btn btn-primary">Create Slider</button>
 
                         </form>
 
@@ -51,4 +53,6 @@
         </div>
     </div>
 </div>
+
+
 
