@@ -17,6 +17,10 @@ builder.Services.AddScoped<IProductService, ProductManager>();
 
 builder.Services.AddScoped<ISliderDal, EfSliderDal>();
 builder.Services.AddScoped<ISliderService, SliderManager>();
+
+builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+builder.Services.AddScoped<IAboutSevice, AboutManager>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // Add services to the container.
