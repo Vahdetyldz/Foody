@@ -1,4 +1,18 @@
+using Foody.BusinessLayer.Abstract;
+using Foody.BusinessLayer.Concrete;
+using Foody.DataAccessLayer.Abstract;
+using Foody.DataAccessLayer.Context;
+using Foody.DataAccessLayer.EntityFramework;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<FoodyContext>();
+
+builder.Services.AddScoped<ICategoryDal,EfCategoriesDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+
+builder.Services.AddScoped<IProductDal, EfProductDal>();
+builder.Services.AddScoped<IProductService, ProductManager>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
