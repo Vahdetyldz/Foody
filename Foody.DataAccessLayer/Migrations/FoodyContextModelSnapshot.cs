@@ -42,6 +42,23 @@ namespace Foody.DataAccessLayer.Migrations
                     b.ToTable("Abouts");
                 });
 
+            modelBuilder.Entity("Foody.EntityLayer.Concrete.AboutItem", b =>
+                {
+                    b.Property<int>("AboutItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AboutItemId"), 1L, 1);
+
+                    b.Property<string>("AboutItemTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AboutItemId");
+
+                    b.ToTable("AboutItems");
+                });
+
             modelBuilder.Entity("Foody.EntityLayer.Concrete.Adress", b =>
                 {
                     b.Property<int>("AdressId")

@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<FoodyContext>();
 
-builder.Services.AddScoped<ICategoryDal,EfCategoriesDal>();
+builder.Services.AddScoped<ICategoryDal, EfCategoriesDal>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
 builder.Services.AddScoped<IProductDal, EfProductDal>();
@@ -21,12 +21,36 @@ builder.Services.AddScoped<ISliderService, SliderManager>();
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
 builder.Services.AddScoped<IAboutSevice, AboutManager>();
 
+builder.Services.AddScoped<IAboutItemDal, EfAboutItemDal>();
+builder.Services.AddScoped<IAboutItemService, AboutItemManager>();
+
+builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
+builder.Services.AddScoped<IFeatureService, FeatureManager>();
+
+builder.Services.AddScoped<IAdressDal, EfAdressDal>();
+builder.Services.AddScoped<IAdressService, AdressManager>();
+
+builder.Services.AddScoped<IReviewDal, EfReviewDal>();
+builder.Services.AddScoped<IReviewService, ReviewManager>();
+
+builder.Services.AddScoped<ISocialMediaDal, EfSocialMediaDal>();
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+app.UseStatusCodePages(async x =>
+{
+    if (x.HttpContext.Response.StatusCode == 404)
+    {
+        x.HttpContext.Response.Redirect("/ErrorPages/ErrorPage404/");
+
+    }
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
